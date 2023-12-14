@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <pthread.h>
 #include <unistd.h>
 
@@ -31,11 +32,28 @@ void WorkWithRandom() {
     pthread_create(&(tid[0]), nullptr, startGardening, &first_gardener);
     pthread_create(&(tid[1]), nullptr, startGardening, &second_gardener);
 
+    // Сохранение в файл по желанию пользователя
+    std::string outputFileRandom= "";
+    std::cout << "Если желаете сохранить результат в файл, введите его название (например 'output.txt'). В противном случае введите N" << std::endl;
+    std::cin >> outputFileRandom;
+    std::ofstream out_stream; 
+    if (outputFileRandom != "N") {
+        out_stream.open(outputFileRandom); 
+    }
+
     // Основной цикл до завершения работы садовников
     while (!first_gardener.haveFinished || !second_gardener.haveFinished) {
         std::cout << "\033[2J\033[1;1H"; // Очистка экрана в консоли
+        if (outputFileRandom != "N") {  // Сохранение в файл, если пользователь согласен
+            my_field.printField(out_stream);
+            out_stream << std::endl;
+        }
         my_field.printField(first_gardener.current_location, second_gardener.current_location);
         usleep(std::min(step_duration_first, step_duration_second));
+    }
+
+    if (outputFileRandom != "N") {
+        out_stream.close();
     }
 
     // Ожидание завершения работы садовников
