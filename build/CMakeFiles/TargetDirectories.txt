@@ -1,0 +1,5 @@
+/home/alex/Computer-Architecture-IHW4/build/CMakeFiles/edit_cache.dir
+/home/alex/Computer-Architecture-IHW4/build/CMakeFiles/rebuild_cache.dir
+/home/alex/Computer-Architecture-IHW4/build/solution/CMakeFiles/Computer-Architecture-IHW4.dir
+/home/alex/Computer-Architecture-IHW4/build/solution/CMakeFiles/edit_cache.dir
+/home/alex/Computer-Architecture-IHW4/build/solution/CMakeFiles/rebuild_cache.dir

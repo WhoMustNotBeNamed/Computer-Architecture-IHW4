@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/alex/Computer-Architecture-IHW4/build/solution",
+  "command": "/usr/bin/clang++   -g -std=gnu++17 -o CMakeFiles/Computer-Architecture-IHW4.dir/main.cpp.o -c /home/alex/Computer-Architecture-IHW4/solution/main.cpp",
+  "file": "/home/alex/Computer-Architecture-IHW4/solution/main.cpp",
+  "output": "solution/CMakeFiles/Computer-Architecture-IHW4.dir/main.cpp.o"
+}
+]

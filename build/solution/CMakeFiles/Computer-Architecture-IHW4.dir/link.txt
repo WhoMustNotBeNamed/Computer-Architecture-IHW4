@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g "CMakeFiles/Computer-Architecture-IHW4.dir/main.cpp.o" -o Computer-Architecture-IHW4 
