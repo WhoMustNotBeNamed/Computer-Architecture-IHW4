@@ -5,6 +5,9 @@ solution/CMakeFiles/Computer-Architecture-IHW4.dir/main.cpp.o
  /home/alex/Computer-Architecture-IHW4/solution/main.cpp
  /home/alex/Computer-Architecture-IHW4/solution/Field.cpp
  /home/alex/Computer-Architecture-IHW4/solution/Gardener.cpp
+ /home/alex/Computer-Architecture-IHW4/solution/WorkWithConsole.cpp
+ /home/alex/Computer-Architecture-IHW4/solution/WorkWithFile.cpp
+ /home/alex/Computer-Architecture-IHW4/solution/WorkWithRandom.cpp
  /usr/include/c++/11/array
  /usr/include/c++/11/backward/binders.h
  /usr/include/c++/11/bits/alloc_traits.h

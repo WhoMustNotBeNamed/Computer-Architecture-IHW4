@@ -27,6 +27,8 @@ struct FieldSize {
     int M;
     int N;
 
+    FieldSize();
+
     FieldSize(int m, int n) : M(m), N(n) {}
 };
 

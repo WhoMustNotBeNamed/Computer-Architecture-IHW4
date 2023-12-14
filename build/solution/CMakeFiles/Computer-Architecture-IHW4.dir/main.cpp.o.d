@@ -215,4 +215,7 @@ solution/CMakeFiles/Computer-Architecture-IHW4.dir/main.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_uninitialized.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_bvector.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/vector.tcc
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/vector.tcc \
+  /home/alex/Computer-Architecture-IHW4/solution/WorkWithFile.cpp \
+  /home/alex/Computer-Architecture-IHW4/solution/WorkWithConsole.cpp \
+  /home/alex/Computer-Architecture-IHW4/solution/WorkWithRandom.cpp

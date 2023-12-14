@@ -50,9 +50,9 @@ private:
     direction current_direction; // текущее направление
     direction direction_when_blocked; // идем в этом направлении, когда подошли к краю
     Field *field; // указатель на поле сада
-    int step_duration; // длительность того сколько занимает прохождение по необрабатываемому квадрату, обрабатывание квадрата x2 от step_duration
+    int step_duration; // длительность того, сколько занимает прохождение по необрабатываемому квадрату, обрабатывание квадрата x2 от step_duration
 
-    bool checkIfTheWayIsBlocked() { // проверяем подошли ли к краю
+    bool checkIfTheWayIsBlocked() { // проверяем, подошли ли к краю
         int current_x = current_location.x;
         int current_y = current_location.y;
 
@@ -87,7 +87,7 @@ private:
 
         pthread_mutex_lock(&mutex);
         while ((*field).getCell(Point(new_x, new_y)) == BEING_GARDENED) {
-            printf(""); // ждем пока освободится, чтобы пройти
+            printf(""); // ждем, пока освободится, чтобы пройти
         }
         pthread_mutex_unlock(&mutex);
 
