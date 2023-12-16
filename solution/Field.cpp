@@ -134,7 +134,7 @@ private:
     std::vector<std::vector<cell>> field_; // поле сада
 
     void pickColor(Point current,
-                   std::ofstream &output) { // выводим квадрат в файл с фоном нужного цвета, в зависимости от того есть ли на нем садовники
+                   std::ofstream &output) { // выводим квадрат в файл, в зависимости от того есть ли на нем садовники
         switch (getCell(current)) {
             case NOT_GARDENED:
                 output << "\xF0\x9F\x8D\x82";
@@ -153,7 +153,7 @@ private:
                 break;
         }
     }
-    // , const std::string &colorвыводим квадрат в консоль с фоном нужного цвета, в зависимости от того есть ли на нем садовники
+    // выводим квадрат в консоль, в зависимости от того есть ли на нем садовники
     void pickColor(Point current) { 
         switch (getCell(current)) {
             case NOT_GARDENED:
