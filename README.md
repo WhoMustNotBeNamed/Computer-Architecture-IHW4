@@ -61,9 +61,7 @@ _3 режима работы программы_:
 ![Alt text](screenshots/image3.png)
 ![Alt text](screenshots/image4.png)
 ![Alt text](screenshots/image5.png)
-![Alt text](screenshots/image6.png)
-![Alt text](screenshots/image7.png)
-![Alt text](screenshots/image8.png)
+
 
 ## _Текст программы:_
 В качестве примера представлен файл `main.cpp` и `WorkWithConsole.cpp`. Остальные файлы вы можете найти в папке `solution`.

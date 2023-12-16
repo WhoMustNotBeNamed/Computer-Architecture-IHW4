@@ -103,14 +103,14 @@ public:
             for (int j = 0; j < size_.M; ++j) {
                 Point current(j, i);
                 if (current == first_gardener_location && current == second_gardener_location) {
-                    pickColor(current, "43");
+                    pickColor(current);
                 } else if (current == first_gardener_location) {
-                    pickColor(current, "102");
+                    pickColor(current);
                 } else if (current == second_gardener_location) {
-                    pickColor(current, "102");
+                    pickColor(current);
                 } else {
-                    pickColor(current, "42");
-                }
+                    pickColor(current);
+                 }
             }
             std::cout << std::endl;
         }
@@ -153,23 +153,23 @@ private:
                 break;
         }
     }
-
-    void pickColor(Point current, const std::string &color) { // выводим квадрат в консоль с фоном нужного цвета, в зависимости от того есть ли на нем садовники
+    // , const std::string &colorвыводим квадрат в консоль с фоном нужного цвета, в зависимости от того есть ли на нем садовники
+    void pickColor(Point current) { 
         switch (getCell(current)) {
             case NOT_GARDENED:
-                std::cout << "\033[" + color + "m\xF0\x9F\x8D\x82\033[m";
+                std::cout << "\xF0\x9F\x8D\x82";
                 break;
             case GARDENED:
-                std::cout << "\033[" + color + "m  \033[m";
+                std::cout << "  ";
                 break;
             case ROCK:
-                std::cout << "\033[" + color + "m\xF0\x9F\x8C\x91\033[m";
+                std::cout << "\xF0\x9F\x8C\x91";
                 break;
             case POND:
-                std::cout << "\033[" + color + "m\xF0\x9F\x94\xB5\033[m";
+                std::cout << "\xF0\x9F\x94\xB5";
                 break;
             case BEING_GARDENED:
-                std::cout << "\033[" + color + "m\xF0\x9F\x91\xB7\033[m";
+                std::cout << "\xF0\x9F\x91\xB7";
                 break;
         }
     }
