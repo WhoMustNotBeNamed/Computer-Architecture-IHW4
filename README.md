@@ -56,15 +56,22 @@ _3 режима работы программы_:
     2. После запуска вам будет предложено сохранить данные в файл. Для этого необходимо ввести название файла (например `output.txt`) или ввести `N`. После создания файл также будет находится в директории `build/solution`.
 
 ## _Пример работы программы:_
+`Примечание`: на такой вывод меня вдохновил Легалов Александр Иванович с его генерацией илюстрации к задаче, сгенерированной Кандинским, а также опыт создания игры "Змейка" на первом курсе с помощью С#) ![Alt text](screenshots/kandinsky-download-1702721904045.png)
+Инфонмацию об окрашивании консоли взял со статьи на хабр: https://habr.com/ru/companies/macloud/articles/558316/
+
+_Пример:_
 ![Alt text](screenshots/image1.png)
+![Alt text](screenshots/image6.png)
 ![Alt text](screenshots/image2.png)
 ![Alt text](screenshots/image3.png)
 ![Alt text](screenshots/image4.png)
 ![Alt text](screenshots/image5.png)
 
 
+
 ## _Текст программы:_
 В качестве примера представлен файл `main.cpp` и `WorkWithConsole.cpp`. Остальные файлы вы можете найти в папке `solution`.
+
 main:
 ``` cpp
 #include <iostream>

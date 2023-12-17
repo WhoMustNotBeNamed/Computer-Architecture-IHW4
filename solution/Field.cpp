@@ -6,39 +6,29 @@
 #include <fstream>
 #include <unistd.h>
 #include <pthread.h>
-
 pthread_t tid[2];
 pthread_mutex_t mutex; // мьютекс, который будет использоваться для синхронизации потоков
-
 struct Point { //структура точка, для обозначения координат на которых расположены садовники и объекты на поле сада
     int x;
     int y;
-
     Point(int x, int y) : x(x), y(y) {}
-
     explicit Point() : x(0), y(0) {}
-
     bool operator==(const Point &right) const {
         return x == right.x && y == right.y;
     }
 };
-
 struct FieldSize {
     int M;
     int N;
-
     FieldSize();
-
     FieldSize(int m, int n) : M(m), N(n) {}
 };
-
 enum direction { // направления, в которых садовники могут совершать движения
     UP,
     DOWN,
     LEFT,
     RIGHT
 };
-
 enum cell { // типы квадратов
     NOT_GARDENED, // неухоженный квадрат сада, но доступный для ухаживания
     GARDENED, // уже ухоженный квадрат сада
@@ -46,13 +36,11 @@ enum cell { // типы квадратов
     POND, // пруд
     BEING_GARDENED // квадрат, за которым в данный момент ухаживает садовник
 };
-
 class Field { // поле сада
 public:
     Field(FieldSize size) : size_(size) {
         field_.resize(size.M, std::vector<cell>(size.N, NOT_GARDENED));
     }
-
     void placeObstacles() { // создаем нужное количество препятствий на поле
         srand(time(nullptr));
         int amount = rand() % ((size_.N*size_.M)*10)/100 +
@@ -74,7 +62,6 @@ public:
             setCell(new_location, new_cell); // ставим препятствие в эту точку
         }
     }
-
     void garden(int step_duration, Point currentSquare) { // садовник ухаживает за квадратом
         pthread_mutex_lock(&mutex);
         if (getCell(currentSquare) == NOT_GARDENED) {
@@ -87,7 +74,6 @@ public:
             usleep(step_duration);
         }
     }
-
     void printField(std::ofstream &output) { // выводим поле в файл
         for (int i = size_.N - 1; i >= 0; --i) {
             for (int j = 0; j < size_.M; ++j) {
@@ -97,44 +83,35 @@ public:
             output << std::endl;
         }
     }
-
     void printField(Point first_gardener_location, Point second_gardener_location) { // выводим поле в консоль
         for (int i = size_.N - 1; i >= 0; --i) {
             for (int j = 0; j < size_.M; ++j) {
                 Point current(j, i);
                 if (current == first_gardener_location && current == second_gardener_location) {
-                    pickColor(current);
-                } else if (current == first_gardener_location) {
-                    pickColor(current);
-                } else if (current == second_gardener_location) {
-                    pickColor(current);
+                    pickColor(current, "41");
+                } else if (current == first_gardener_location || current == second_gardener_location) {
+                    pickColor(current, "43");
                 } else {
-                    pickColor(current);
-                 }
+                    pickColor(current, "42");
+                }
             }
             std::cout << std::endl;
         }
     }
-
     cell getCell(Point point) {
         return field_[point.x][point.y];
     }
-
     void setCell(Point point, cell value) {
         field_[point.x][point.y] = value;
     }
-
     FieldSize getSize() const {
         return size_;
     }
-
 private:
     FieldSize size_;
-
     std::vector<std::vector<cell>> field_; // поле сада
-
     void pickColor(Point current,
-                   std::ofstream &output) { // выводим квадрат в файл, в зависимости от того есть ли на нем садовники
+                   std::ofstream &output) { // выводим квадрат в файл с фоном нужного цвета, в зависимости от того есть ли на нем садовники
         switch (getCell(current)) {
             case NOT_GARDENED:
                 output << "\xF0\x9F\x8D\x82";
@@ -153,23 +130,22 @@ private:
                 break;
         }
     }
-    // выводим квадрат в консоль, в зависимости от того есть ли на нем садовники
-    void pickColor(Point current) { 
+    void pickColor(Point current, const std::string &color) { // выводим квадрат в консоль с фоном нужного цвета, в зависимости от того есть ли на нем садовники
         switch (getCell(current)) {
             case NOT_GARDENED:
-                std::cout << "\xF0\x9F\x8D\x82";
+                std::cout << "\033[" + color + "m\xF0\x9F\x8D\x82\033[m";
                 break;
             case GARDENED:
-                std::cout << "  ";
+                std::cout << "\033[" + color + "m  \033[m";
                 break;
             case ROCK:
-                std::cout << "\xF0\x9F\x8C\x91";
+                std::cout << "\033[" + color + "m\xF0\x9F\x8C\x91\033[m";
                 break;
             case POND:
-                std::cout << "\xF0\x9F\x94\xB5";
+                std::cout << "\033[" + color + "m\xF0\x9F\x94\xB5\033[m";
                 break;
             case BEING_GARDENED:
-                std::cout << "\xF0\x9F\x91\xB7";
+                std::cout << "\033[" + color + "m\xF0\x9F\x91\xB7\033[m";
                 break;
         }
     }
